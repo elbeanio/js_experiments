@@ -5,18 +5,18 @@ document.body.appendChild(renderer.view);
 var graphics = new PIXI.Graphics();
 
 // Cell size and numbers
-var cell_size = 10;
-var cell_dims = [ Math.floor(renderer.width/cell_size), Math.floor(renderer.height / cell_size)];
+var cell_size = 8;
+var cell_dims = [Math.floor(renderer.width/cell_size), Math.floor(renderer.height / cell_size)];
 var n = 0;
 
 // Transitional state animation
-var state_colours = [0x111111,
-                     0x333333,
-                     0x555555,
-                     0x777777,
-                     0x999999,
-                     0xbbbbbb,
-                     0xdddddd,
+var state_colours = [0x993300,
+                     0x551133,
+                     0x335555,
+                     0x335577,
+                     0x997799,
+                     0x9999cc,
+                     0xaaaaff,
                      0xffffff];
 var state_count = state_colours.length;
 var state_factor = 1 / state_count;
