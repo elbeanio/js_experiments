@@ -23,15 +23,31 @@ function copy_grid(grid){
     return newArray;
 }
 
-
-function delta_grid(g, x, y, delta){
+function toroid(g, x, y){
     if(x < 0){x = g.x_size-1;}
     if(y < 0){y = g.y_size-1;}
     if(x > g.x_size-1){x = 0;}
     if(y > g.y_size-1){y = 0;}
-    g[y][x] += delta;
+    return {x: x, y: y};
 }
 
+function delta_grid(g, x, y, delta){
+    var c = toroid(g, x, y);
+    g[c.y][c.x] += delta;
+}
+
+function gv(g, x, y){
+    var c = toroid(x, y);
+    return g[c.y][c.x];
+}
+
+function neighbours(g, x, y){
+    return [
+        [gv(g, x-1, y-1), gv(g, x, y-1), gv(g, x+1, y-1)],
+        [gv(g, x-1, y), gv(g, x, y), gv(g, x+1, y)],
+        [gv(g, x-1, y+1), gv(g, x, y+1), gv(g, x+1, y+1)],
+    ];
+}
 
 function change_cell(g, x, y, on) {
     var delta = on ? 1 : -1;
